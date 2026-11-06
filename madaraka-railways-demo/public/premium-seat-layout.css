@@ -1,0 +1,9 @@
+.premium-coach{width:min(100%,435px);padding:14px 16px 22px;border-top:4px solid #397fe9;border-radius:25px;background:linear-gradient(#fff,#fafafa)}
+.premium-coach-front{display:none}
+.premium-seat-columns,.premium-seat-row{grid-template-columns:20px 42px 22px 42px 20px}
+.premium-seat-row-single .seat-row-number{visibility:hidden}
+.premium-seat-row-single button[data-seat]{grid-column:3}
+.premium-seat-row-single .seat-aisle{display:none}
+.premium-seat-row-single button[data-seat]~.seat-row-number{display:none}
+.premium-seat-button{width:36px;height:36px;border-radius:9px 9px 6px 6px}
+.premium-seat-button small{font-size:9px;font-weight:700}
