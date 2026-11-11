@@ -25,7 +25,7 @@ const logoLight = logo;
 
 const STATIONS = ["Nairobi Terminus", "Athi River", "Emali", "Kibwezi", "Mtito Andei", "Voi", "Miasenyi", "Mariakani", "Mombasa Terminus"];
 
-function Logo({ small, onLight }: { small?: boolean; onLight?: boolean }) {
+export function Logo({ small, onLight }: { small?: boolean; onLight?: boolean }) {
   return (
     <img
       src={onLight ? logoLight : logo}
@@ -113,7 +113,8 @@ function BookingCard() {
         const [trainType, origin, destination, departure] = fields.map((field) => field.value);
         if (!origin || !destination || !departure) return;
         const params = new URLSearchParams({ origin, destination, departure, service: trainType === "Inter County" ? "intercounty" : trainType === "Express" ? "express" : "", class: tab === "premium" ? "premium" : "" });
-        window.location.assign(`/booking?${params.toString()}`);
+        const bookingPath = tab === "premium" ? "/premium-booking/steps" : "/booking";
+        window.location.assign(`${bookingPath}?${params.toString()}`);
       }} className="rounded-b-lg rounded-tr-lg bg-background p-4 shadow-card">
         <h3 className="mb-3 flex items-center gap-1 text-lg text-foreground">
           {tab === "me" ? "Madaraka Express - Online Booking" : "Madaraka Express - Premium Booking"} <Train className="h-4 w-4 text-cta" />

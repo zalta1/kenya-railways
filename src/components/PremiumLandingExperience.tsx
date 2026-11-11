@@ -78,7 +78,7 @@ export function PremiumLandingExperience() {
     if (trip === "multi") {
       if (segments.length < 2 || segments.some((segment) => !segment.from || !segment.to || segment.from === segment.to || !segment.date) || passengerTotal < 1 || passengers.adult < 1) return setNotice("Complete every journey segment and add at least one adult passenger.");
       const params = new URLSearchParams({ class: "premium", service: "express", trip, segments: JSON.stringify(segments), adult: String(passengers.adult), teenager: String(passengers.teenager), child: String(passengers.child), infant: String(passengers.infant) });
-      window.location.assign(`/booking?${params.toString()}`);
+      window.location.assign(`/premium-booking/steps?${params.toString()}`);
       return;
     }
     if (!from || !to || from === to || !departure || passengerTotal < 1 || passengers.adult < 1 || (trip === "round" && (!returnDate || returnDate < departure))) {
@@ -88,7 +88,7 @@ export function PremiumLandingExperience() {
       adult: String(passengers.adult), teenager: String(passengers.teenager), child: String(passengers.child), infant: String(passengers.infant),
       ...(trip === "round" ? { return_date: returnDate } : {}),
     });
-    window.location.assign(`/booking?${params.toString()}`);
+    window.location.assign(`/premium-booking/steps?${params.toString()}`);
   }
 
   const navCard = "group flex min-h-[80px] items-center gap-3 rounded-2xl border bg-white px-4 py-3 text-left transition hover:-translate-y-0.5 hover:shadow-md";
